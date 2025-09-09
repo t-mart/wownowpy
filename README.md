@@ -8,6 +8,6 @@ Here in Python, we use the [HTTP endpoints](https://wowdev.wiki/TACT#HTTP_URLs) 
 
 ```bash
 uv tool install git+https://github.com/t-mart/wownowpy
-uv run wownow --help
+wownow
 ```
 
