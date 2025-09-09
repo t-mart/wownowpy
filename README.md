@@ -1,4 +1,4 @@
-# wownow (python)
+# wownowpy (python)
 
 Python port of [wownow](https://github.com/t-mart/wownow) because that's now broken (hostname no longer resolves).
 
