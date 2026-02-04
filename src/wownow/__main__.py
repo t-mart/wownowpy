@@ -13,6 +13,7 @@ products: list[Product] = [
   Product("wow"),
   Product("wow_classic"),
   Product("wow_classic_era"),
+  Product("wow_anniversary"),
 ]
 
 
