@@ -161,11 +161,17 @@ class BuildVersion:
     major, minor, patch, build = parts
     return cls(major=major, minor=minor, patch=patch, build=build)
 
-  def get_version(self) -> str:
+  @property
+  def version(self) -> str:
     return f"{self.major}.{self.minor}.{self.patch}"
 
-  def get_build(self) -> str:
-    return self.build
+  @property
+  def interface_version(self) -> str:
+    """
+    Produce an interface version like `10203`.
+    """
+    # the logic is major + zero-padded two-digit minor + zero-padded two-digit patch
+    return f"{self.major}{int(self.minor):02d}{int(self.patch):02d}"
 
 
 async def run():
@@ -188,8 +194,9 @@ async def run():
       build_version = BuildVersion.parse(version_str)
       version_entry: dict[str, Any] = {
         "region": row["Region"],
-        "version": build_version.get_version(),
-        "build": build_version.get_build(),
+        "version": build_version.version,
+        "build": build_version.build,
+        "interface": build_version.interface_version,
       }
       versions.append(version_entry)
 
